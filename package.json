@@ -1,0 +1,29 @@
+{
+	"name": "currency-convert-be",
+	"version": "1.0.0",
+	"description": "Just experimental currency conversion app (server app in Node JS)",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xcapistr/currency-convert-be.git"
+	},
+	"author": "Marek Capistrak",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/xcapistr/currency-convert-be/issues"
+	},
+	"homepage": "https://github.com/xcapistr/currency-convert-be#readme",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"mongoose": "^5.1.6",
+		"morgan": "^1.9.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.17.5"
+	}
+}
