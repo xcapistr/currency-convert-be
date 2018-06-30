@@ -4,15 +4,14 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const conversionsRoutes = require('./api/routes/conversions');
 const ratesRoutes = require('./api/routes/rates');
 
-// DB connection
 mongoose.connect(
 	'mongodb://purple:' +
 		process.env.MONGO_ATLAS_PW +
 		'@purple-currency-converter-shard-00-00-hklqs.mongodb.net:27017,purple-currency-converter-shard-00-01-hklqs.mongodb.net:27017,purple-currency-converter-shard-00-02-hklqs.mongodb.net:27017/test?ssl=true&replicaSet=purple-currency-converter-shard-0&authSource=admin&retryWrites=true'
 );
-
 // morgan for logs in console
 app.use(morgan('dev'));
 
@@ -35,6 +34,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
+app.use('/conversions', conversionsRoutes);
 app.use('/rates', ratesRoutes);
 
 // Errors handling
