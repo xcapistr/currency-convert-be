@@ -26,12 +26,18 @@ var updateRates = callback => {
 				});
 				res.on('end', function() {
 					var rates = JSON.parse(body);
-					fs.writeFileSync(
-						'./api/modules/rates/rates.json',
-						JSON.stringify(rates)
-					);
-					rates.message = 'Rates has been updated';
-					callback(rates);
+					console.log(rates.success);
+					if (rates.success) {
+						fs.writeFileSync(
+							'./api/modules/rates/rates.json',
+							JSON.stringify(rates)
+						);
+						rates.message = 'Rates has been updated';
+						callback(rates);
+					} else {
+						ratesData.message = 'Update failure, outdated rates';
+						callback(ratesData);
+					}
 				});
 			})
 			.end();
