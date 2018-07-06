@@ -20,7 +20,7 @@ Return actual currency rates from fixer.io. Fixer data are stored in local file.
 
 Return list of conversions.
 
-### GET /conversions/<conversion-id>
+### GET /conversions/[conversion-id]
 
 Return single conversion.
 
@@ -38,6 +38,6 @@ Request body example:
 }
 ```
 
-### DELETE /converions/<conversion-id>
+### DELETE /converions/[conversion-id]
 
 Remove a single conversion.
