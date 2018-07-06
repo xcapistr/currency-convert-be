@@ -2,29 +2,29 @@
 
 Just experimental currency conversion app (server app in Node JS). It uses [Mongo DB](https://www.mongodb.com/) and [fixer.io](https://fixer.io/) API.
 
-# FIXER rates access
+## FIXER rates access
 
 Put `"FIXER_KEY"` value in `./nodemon.json` file.
 
-# Run server
+## Run server
 
 Run `npm start` command.
 
-#API methods
+## API methods
 
-##GET /rates
+### GET /rates
 
 Return actual currency rates from fixer.io. Fixer data are stored in local file. Data older than 1 hour are always updated.
 
-##GET /conversions
+### GET /conversions
 
 Return list of conversions.
 
-##GET /conversions/<conversion-id>
+### GET /conversions/<conversion-id>
 
 Return single conversion.
 
-##POST /conversions
+### POST /conversions
 
 Make a new conversion and save it to DB.
 
@@ -38,6 +38,6 @@ Request body example:
 }
 ```
 
-##DELETE /converions/<conversion-id>
+### DELETE /converions/<conversion-id>
 
 Remove a single conversion.
