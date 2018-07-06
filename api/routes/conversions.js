@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 	Conversion.find()
 		.exec()
 		.then(docs => {
-			console.log(docs);
+			// console.log(docs);
 			res.status(200).json(docs);
 		})
 		.catch(err => {
@@ -25,8 +25,13 @@ router.get('/', (req, res, next) => {
 // Handle incoming POST request to /conversions
 // includes calling updateRates function and calculate the result of the conversion
 router.post('/', (req, res, next) => {
+	console.log('calling POST on /conversions');
 	// 1st control
 	if (!req.body.currencyA || !req.body.currencyB || !req.body.amountA) {
+		console.log(
+			'missing atributes, required are currencyA, currencyB and amountA'
+		);
+		console.log(req);
 		res.status(400).json({
 			message:
 				'missing atributes, required are currencyA, currencyB and amountA'
@@ -54,6 +59,10 @@ router.post('/', (req, res, next) => {
 			conversion.amountB =
 				(conversion.amountA / newRates.rates[conversion.currencyA]) *
 				newRates.rates[conversion.currencyB];
+
+			conversion.amountUSD =
+				(conversion.amountA / newRates.rates[conversion.currencyA]) *
+				newRates.rates['USD'];
 
 			// save
 			conversion
@@ -104,7 +113,13 @@ router.delete('/:conversionId', (req, res, next) => {
 	Conversion.findOneAndRemove({ _id: id }) //updated function from .remove()
 		.exec()
 		.then(result => {
-			res.status(200).json(result);
+			if (result) {
+				res
+					.status(200)
+					.json({ message: 'conversion has been deleted', conversion: result });
+			} else {
+				res.status(404).json({ message: 'conversion not found' });
+			}
 		})
 		.catch(err => {
 			console.log(err);

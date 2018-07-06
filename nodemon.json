@@ -1,6 +1,6 @@
 {
 	"env": {
 		"MONGO_ATLAS_PW": "purple123",
-		"FIXER_KEY": "da9c4cd2418f3ae3a90f246ce864f7ee"
+		"FIXER_KEY": "fixer key"
 	}
 }

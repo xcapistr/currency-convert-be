@@ -5,7 +5,8 @@ const conversionSchema = mongoose.Schema({
 	currencyA: String,
 	currencyB: String,
 	amountA: Number,
-	amountB: Number
+	amountB: Number,
+	amountUSD: Number
 });
 
 module.exports = mongoose.model('Conversion', conversionSchema);
